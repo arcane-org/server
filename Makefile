@@ -21,9 +21,9 @@ delete-db:
 reboot-db: stop-db delete-db setup-db
 
 migrate:
-	@docker cp /home/thewisepigeon/projects/beta/api/schema.sql postgres:/tmp/schema.sql
-	@docker exec -it postgres psql -U postgres -c "CREATE DATABASE beta;"
-	@docker exec -it postgres psql -U postgres -d beta -f /tmp/schema.sql
+	@docker cp ./schema.sql postgres:/tmp/schema.sql
+	@docker exec -it postgres psql -U postgres -c "CREATE DATABASE arcane;"
+	@docker exec -it postgres psql -U postgres -d arcane -f /tmp/schema.sql
 	@echo "Database rebooted"
 
 test:

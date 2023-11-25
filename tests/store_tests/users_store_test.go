@@ -4,18 +4,19 @@ import (
 	"server/models"
 	"server/store"
 	"testing"
-
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/uuid"
+	"github.com/joho/godotenv"
 )
 
 func TestUsersStore(t *testing.T) {
+	godotenv.Load("../../.env")
 	db := store.GetPostgresPool()
 	store := store.NewUsersStore(db)
 	user_id := uuid.NewString()
 	userData := &models.User{
 		Id:        user_id,
-		Email:     "ramdom@mail.com",
+		Email:     "random@mail.com",
 		Username:  "random",
 		AvatarURL: "lorem picsum",
 	}
