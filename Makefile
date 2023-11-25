@@ -1,7 +1,7 @@
 .PHONY: setup-db stop-db delete-db reboot-db
 
 build:
-	@go build .
+	@go build -o arcane .
 
 run-dev:
 	@go run main.go

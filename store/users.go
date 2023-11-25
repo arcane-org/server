@@ -18,7 +18,7 @@ func NewUsersStore(db *sqlx.DB) *Users {
 
 func (s *Users) Insert(u *models.User) error {
 	_, err := s.db.NamedExec(
-    "insert into users(id, email, username, avatar_url) values(:id, :email, :username, :avatar_url)",
+    "insert into users(id, email, github_id, username, avatar_url) values(:id, :email, :github_id, :username, :avatar_url)",
 		u,
 	)
 	return err
@@ -42,4 +42,14 @@ func (s *Users) GetByEmail(email string) (u *models.User, err error) {
 		email,
 	)
 	return
+}
+
+func (s *Users) GetByGithubId(id string) (u *models.User, err error){
+	u = new(models.User)
+	err = s.db.Get(
+		u,
+		"select * from users where github_id=$1",
+		id,
+	)
+  return
 }

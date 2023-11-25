@@ -16,6 +16,7 @@ func TestUsersStore(t *testing.T) {
 	user_id := uuid.NewString()
 	userData := &models.User{
 		Id:        user_id,
+    GithubId: "random_id",
 		Email:     "random@mail.com",
 		Username:  "random",
 		AvatarURL: "lorem picsum",
